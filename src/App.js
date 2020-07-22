@@ -17,6 +17,14 @@ class App extends Component {
     }, 1000)
   }
 
+  componentDidUpdate(){
+    console.log('Atualizou!')
+  }
+
+  // shouldComponentUpdate(){
+
+  // }
+
   render(){
     return (
       <div>
