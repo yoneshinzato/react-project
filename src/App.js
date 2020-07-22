@@ -1,60 +1,47 @@
-import React, { Component } from "react"; //1
+import React, { Component } from "react";
 
-//4
-class Equipe extends Component {
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      nome: "Yone",
+      contador: 0,
+    };
+    //só usa se for com function, com a arrow function funciona sem
+    // this.aumentar = this.aumentar.bind(this);
+    // this.diminuir = this.diminuir.bind(this);
+  }
+
+  aumentar = () => {
+    let batata = this.state;
+    batata.contador += 1;
+    batata.nome = "Ferdinando";
+    this.setState(batata);
+  };
+
+  diminuir = () => {
+    let tomate = this.state;
+    if (tomate.contador <= 0) {
+      alert("Ops, está abaixo de zero!");
+      return; //para parar
+    }
+    tomate.contador -= 1;
+    tomate.nome = "Afrânio";
+    this.setState(tomate);
+  };
+
   render() {
     return (
       <>
-        <Sobre
-          nome={this.props.nome}
-          cargo={this.props.cargo}
-          idade={this.props.idade}
-        />
+        <h2>{this.state.nome}</h2>
+        <h3>
+          <button onClick={this.diminuir}>-</button>
+          {this.state.contador}
+          <button onClick={this.aumentar}>+</button>
+        </h3>
       </>
     );
   }
 }
 
-//5
-class Sobre extends Component {
-  render() {
-    return (
-      <>
-        <h2>Olá! Sou a(o) {this.props.nome}.</h2>
-        <h3>Cargo: {this.props.cargo} de uma empresa</h3>
-        <h3>Idade: {this.props.idade} anos</h3>
-      </>
-    );
-  }
-}
-
-//6
-// const Social = (props) => {
-//   return (
-//     <div>
-//       <a href={props.twitter}>Twitter</a>
-//       <a href={props.linkedin}>LinkedIn</a>
-//     </div>
-//   );
-// };
-
-//2
-function App() {
-  return (
-    <div>
-      <h1>Conheça nossa equipe</h1>
-      <Equipe nome="Eliana" cargo="CTO" idade="34" />
-      {/* <Social
-        twitter="https://www.twitter.com/eliana"
-        linkedin="https://www.linkedin.com/eliana"
-      /> */}
-      <Equipe nome="Molibdênio" cargo="PO" idade="37" />
-      {/* <Social
-        twitter="https://www.twitter.com/yo-shi"
-        linkedin="https://www.linkedin.com/yo-shi"
-      /> */}
-    </div>
-  );
-}
-
-export default App; //3
+export default App;
