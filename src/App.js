@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import Membro from './components/Membro'
 
 
 
@@ -7,7 +7,8 @@ class App extends Component {
   render(){
     return (
       <>
-        <h1>Hellow</h1>
+        <Membro nome="Visitante" />
+       
       </>
     )
   }
